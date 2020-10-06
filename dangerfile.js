@@ -9,11 +9,11 @@ const frontendLabel = { color: '#00F',  description: 'Frontend Related Change', 
 {"modified":false,"created":true,"deleted":false,"edited":true}
 
 if (php.created || php.modified || php.deleted || php.edited) {
+  message('PHP files changed, adding Backend label');
   danger.github.utils.createOrAddLabel(backendLabel);
 }
 
 if (js.created || js.modified || js.deleted || js.edited) {
+  message('JS files changed, adding Frontend label');
   danger.github.utils.createOrAddLabel(frontendLabel);
 }
-
-message('Hello from Danger');
