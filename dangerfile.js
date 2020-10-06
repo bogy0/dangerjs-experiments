@@ -1,7 +1,7 @@
 import { message, danger } from "danger"
 
 const php = danger.git.fileMatch("**/*.php");
-const js = danger.git.fileMatch("src/**/*.js");
+const js = danger.git.fileMatch("**/*.js");
 
 const backendLabel = { color: '#ff0000',  description: 'Backend Related Change',  name: 'Backend' };
 const frontendLabel = { color: '#0000ff',  description: 'Frontend Related Change',  name: 'Frontend' };
