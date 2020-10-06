@@ -17,6 +17,7 @@ if (js.created || js.modified || js.deleted || js.edited) {
 }
 
 const baseBranch = danger.github.pr.base.ref.toLowerCase();
+console.log({ baseBranch });
 if (baseBranch.includes('projcat')) {
   message('Adding Projcat label');
   danger.github.utils.createOrAddLabel({ color: '#00ff00',  description: baseBranch,  name: baseBranch });
