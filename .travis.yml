@@ -5,3 +5,6 @@ node_js:
 before_script:
 - yarn install
 - yarn danger ci
+
+script:
+- echo "skipping tests"
