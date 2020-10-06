@@ -1,14 +1,10 @@
 import { message, danger } from "danger"
 
 const php = danger.git.fileMatch("**/*.php");
-const js = danger.git.fileMatch("src/**/*.js");
+const js = danger.git.fileMatch("**/*.js");
 
-const backendLabel = { color: '#F00',  description: 'Backend Related Change',  name: 'Backend' };
-const frontendLabel = { color: '#00F',  description: 'Frontend Related Change',  name: 'Frontend' };
-
-console.log(JSON.stringify(danger.github.api))
-console.log(JSON.stringify(danger.github.pr))
-console.log(JSON.stringify(danger.github.thisPR))
+const backendLabel = { color: '#ff0000',  description: 'Backend Related Change',  name: 'Backend' };
+const frontendLabel = { color: '#0000ff',  description: 'Frontend Related Change',  name: 'Frontend' };
 
 if (php.created || php.modified || php.deleted || php.edited) {
   message('PHP files changed, adding Backend label');
@@ -18,4 +14,11 @@ if (php.created || php.modified || php.deleted || php.edited) {
 if (js.created || js.modified || js.deleted || js.edited) {
   message('JS files changed, adding Frontend label');
   danger.github.utils.createOrAddLabel(frontendLabel);
+}
+
+const baseBranch = danger.github.pr.base.ref;
+
+if (baseBranch.toLowerCase().includes('projcat')) {
+  message('Adding Projcat label');
+  danger.github.utils.createOrAddLabel({ color: '#00ff00',  description: baseBranch,  name: baseBranch });
 }
