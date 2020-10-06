@@ -6,9 +6,7 @@ const js = danger.git.fileMatch("src/**/*.js");
 const backendLabel = { color: '#F00',  description: 'Backend Related Change',  name: 'Backend' };
 const frontendLabel = { color: '#00F',  description: 'Frontend Related Change',  name: 'Frontend' };
 
-console.log(JSON.stringify(danger.github.api))
-console.log(JSON.stringify(danger.github.pr))
-console.log(JSON.stringify(danger.github.thisPR))
+console.log(JSON.stringify(danger.github.pr.base))
 
 if (php.created || php.modified || php.deleted || php.edited) {
   message('PHP files changed, adding Backend label');
